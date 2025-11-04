@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        body, html {
+	        height: 100%;
+            color: #000000cd;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 0.9em;
+        }
+        html{
+            height: 100%;
+            background-image:url("wifi.jpg");
+            background-position: center;
+            background-repeat: repeat;
+            background-size: cover;
+        }
+        /*div{
+            border:1px solid red; 
+        }*/
+        /* GRID OF 'FLEXBOX' BOXES */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .item {
+            width: 32%;
+            padding-bottom: 18%; /* 32:18, i.e. 16:9 */
+            margin-bottom: 2%; /* (100-32*3)/2 */
+            background-color: rgba(255,255,255,0.8);
+            background-size: cover;
+            cursor: pointer;
+        }
+        #item1{
+            background-image:url('wifi.jpg'); 
+        }
+    </style>
+</head>
+<body>
+    <button class="start" type="button" onclick='randomLocation("item");'>DESTROY</button>
+    <div class="container">
+       <div class="item" onclick='randomLocation("item");'>
+            THE IDEA
+        </div>
+        <div class="item" id="item1">
+            Technique: Defamiliarise
+        </div>
+        <div class="item">
+            Technique: Annotate
+        </div> 
+        <div class="item">
+            Technique: Generate errors
+        </div> 
+        <div class="item">
+            Technique: Explore code
+        </div> 
+        <div class="item">
+            Technique: Map components
+        </div> 
+        <div class="item">
+            Association: Historical
+        </div> 
+        <div class="item">
+            Association: Technical
+        </div> 
+        <div class="item">
+            Association: Feelings
+        </div> 
+        <div class="item">
+            Association: Political
+        </div> 
+        <div class="item">
+            Association: Gender
+        </div> 
+        <div class="item">
+            Association: Social class
+        </div> 
+        <div class="item">
+            Association: Race
+        </div> 
+    </div>
+
+    <script>
+    // RANDOMISE POSITIONS OF THE 'item' CLASS
+    //randomLocation("item");
+    setTimeout(trigger, 1000);
+
+    function trigger(){
+        randomLocation("item");
+        setTimeout(trigger, 200);
+    }
+
+    
+    // ADD A RANDOM POSITION TO A CLASS OF TAGS
+    function randomLocation(myclass){
+	    const items = document.getElementsByClassName(myclass);
+	    for (let i = 0; i < items.length; i++) {
+            let style = randomPosition(); 
+            items.item(i).setAttribute("style", style);
+            console.log(i);
+	    }
+    }
+            
+    // GENERATE A RANDOM POSITION STYLE FOR THE ELEMENT
+    function randomPosition(){
+        let top = rand(100);                    
+        let bottom = rand(100);                 
+        let deg = rand(360);                    
+        let style = "";
+        style += "transform:rotate("+deg+"deg);";
+        style += "position:absolute;";
+        style += "top:"+top+"%;";
+        style += "left:"+bottom+"%;";
+        console.log(style)
+        return style;
+    }
+
+    // GENERATE A RANDOM NUMBER
+    function rand(i){
+        return Math.floor(Math.random()*i); 
+    }
+   </script>
+</body>
+</html>
